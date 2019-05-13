@@ -1,0 +1,42 @@
+   # dowload ELK stack
+      wget https://artifacts.elastic.co/downloads/logstash/logstash-6.7.1.rpm
+      wget https://artifacts.elastic.co/downloads/kibana/kibana-6.7.1-x86_64.rpm
+      wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.1.rpm
+   # install java 
+      yum install -y java-1.8.0-openjdk
+      java -version
+   # install ELK
+    # install elasticsearch
+      rpm -ivh elasticsearch-6.7.1.rpm
+      vi /etc/elasticsearch/elasticsearch.yml
+      systemctl start elasticsearch
+      systemctl restart elasticsearch
+      systemctl status elasticsearch
+   # install kibana
+      rpm -ivh kibana-6.7.1-x86_64.rpm
+      vi /etc/kibana/kibana.yml
+      systemctl restart kibana
+      systemctl stauts kibana
+    # install logstash
+      rpm -ivh logstash-6.7.1-x86_64.rpm
+      systemctl restart kibana
+      systemctl status kibana
+   # install nginx 
+      yum install nginx -y
+      vi /etc/nginx/nginx.conf
+   # open port firewall
+      firewall-cmd --list-all
+      firewall-cmd --permanent --add-port=9200
+      firewall-cmd --permanent --add-port=9200/tcp
+      firewall-cmd --permanent --add-port=9300/tcp
+      firewall-cmd --permanent --add-port=80/tcp
+      firewall-cmd --permanent --add-port=5601/tcp
+      firewall-cmd --reload
+      firewall-cmd --list-all
+   # turn off selinux
+      vi /etc/sysconfig/selinux
+      init 6
+   
+ 
+ 
+ 
